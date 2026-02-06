@@ -89,6 +89,8 @@ const getAvailabilityByProvider = async (req, res) => {
 
 
 
+
+
 const getAvailableSlots = async (req, res) => {
   try {
     const { providerId } = req.params;
@@ -158,6 +160,12 @@ const getAvailableSlots = async (req, res) => {
   }
 };
 
+const deleteAvailability = async (req, res) => {
+  await Availability.findByIdAndDelete(req.params.id);
+  res.json({ message: "Availability removed" });
+};
+
+
 
 
 module.exports = {
@@ -165,4 +173,5 @@ module.exports = {
   getMyAvailability,
   getAvailabilityByProvider,
   getAvailableSlots,
+  deleteAvailability,
 };

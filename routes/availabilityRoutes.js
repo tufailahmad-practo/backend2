@@ -5,7 +5,8 @@ const {
   setAvailability,
   getMyAvailability,
   getAvailabilityByProvider,
-  getAvailableSlots, // ✅ ADD THIS
+  getAvailableSlots,
+  deleteAvailability,
 } = require("../controllers/availabilityController");
 
 const { protect, providerOnly } = require("../middleware/authMiddleware");
@@ -13,6 +14,8 @@ const { protect, providerOnly } = require("../middleware/authMiddleware");
 // PROVIDER
 router.post("/", protect, providerOnly, setAvailability);
 router.get("/my", protect, providerOnly, getMyAvailability);
+router.delete("/:id", protect, providerOnly, deleteAvailability);
+
 
 // USER
 router.get("/provider/:providerId", protect, getAvailabilityByProvider);

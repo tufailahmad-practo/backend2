@@ -35,7 +35,7 @@ const getMyServices = async (req, res) => {
 // GET all active services (for users)
 const getAllServices = async (req, res) => {
   try {
-    const services = await Service.find({ isActive: true }).populate(
+    const services = await Service.find().populate(
       "providerId",
       "name"
     );
